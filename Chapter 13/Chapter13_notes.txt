@@ -1,0 +1,32 @@
+Unsolved exercises:
+
+9. Tile a part of a window with Regular_hexagons (use at least eight hexagons).
+
+Notes on exercise 9:
+
+ - this isn't too complicated, I skipped this because I focused on other, more challengeing exercises
+
+-----------------------------------------------------------------------------------------------------
+
+14. Define a right triangle class. Make an octagonal shape out of eight right triangles of different colors.
+
+Notes on exercise 14:
+
+ - I defined a right triangle class, but I didn't make an octogonal shape out of right triangles
+
+-----------------------------------------------------------------------------------------------------
+
+15. “Tile” a window with small right triangles.
+
+-----------------------------------------------------------------------------------------------------
+
+16. Do the previous exercise, but with hexagons.
+
+-----------------------------------------------------------------------------------------------------
+
+17. Do the previous exercise, but using hexagons of a few different colors.
+
+-----------------------------------------------------------------------------------------------------
+
+18. Define a class Poly that represents a polygon but checks that its points really do make a polygon in its constructor. Hint: You’ll have to supply the points to the constructor.
+

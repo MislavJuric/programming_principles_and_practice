@@ -1,0 +1,33 @@
+Here I haven't solved some exercises, mostly because I solve similar (and a little bit more difficult) exercises in Chapter 4.
+
+Here are the exercises I haven't solved:
+
+--------------------------------------------------------------------------------------------------
+
+8 Write a program to test an integer value to determine if it is odd or even. As always, make sure your output is clear and complete. In other words, don’t just output yes or no. Your output should stand alone, like The value 4 is an even number. Hint: See the remainder (modulo) operator in §3.4.
+
+--------------------------------------------------------------------------------------------------
+
+9 Write a program that converts spelled-out numbers such as “zero” and “two” into digits, such as 0 and 2. When the user inputs a number, the program should print out the corresponding digit. Do it for the values 0, 1, 2, 3, and 4 and write out not a number I know if the user enters something that doesn’t correspond, such as stupid computer!.
+
+--------------------------------------------------------------------------------------------------
+
+10 Write a program that takes an operation followed by two operands and outputs the result. For example:
+
++ 100 3.14
+* 4 5
+
+Read the operation into a string called operation and use an if-statement to figure out which operation the user wants, for example, if (operation=='+'). Read the operands into variables of type double. Implement this for operations called +, –, *, /, plus, minus, mul, and div with their obvious meanings.
+
+--------------------------------------------------------------------------------------------------
+
+11 Write a program that prompts the user to enter some number of pennies (1-cent coins), nickels (5-cent coins), dimes (10-cent coins), quarters (25-cent coins), half dollars (50-cent coins), and one-dollar coins (100-cent coins). Query the user separately for the number of each size coin, e.g., “How many pennies do you have?” Then your program should print out something like this:
+
+You have 23 pennies.
+You have 17 nickels.
+You have 14 dimes.
+You have 7 quarters.
+You have 3 half dollars.
+The value of all of your coins is 573 cents.
+
+Make some improvements: if only one of a coin is reported, make the output grammatically correct, e.g., 14 dimes and 1 dime (not 1 dimes). Also, report the sum in dollars and cents, i.e., $5.73 instead of 573 cents.

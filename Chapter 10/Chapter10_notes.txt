@@ -1,0 +1,16 @@
+Notes:
+
+Chapter 10 and Chapter 11 deal with input and output. I have to admit that working with file I/O is not my strong suit.
+
+----------------------------------------------------------------------------------------------------
+
+Unsolved exercises:
+
+7. Make a version of the calculator from Chapter 7 that accepts Roman numerals rather than the usual Arabic ones, for example, XXI + CIV == CXXV.
+
+
+----------------------------------------------------------------------------------------------------
+
+9. Write a program that takes two files containing sorted whitespace-separated words and merges them, preserving order.
+
+

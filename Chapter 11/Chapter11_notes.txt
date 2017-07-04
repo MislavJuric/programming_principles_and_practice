@@ -1,0 +1,28 @@
+Unsolved exercises:
+
+8. Use the program from the previous exercise (Exercise 7) to make a dictionary (as an alternative to the approach in §11.7). Run the result on a multi-page text file, look at the result, and see if you can improve the program to make a better dictionary.
+
+-----------------------------------------------------------------------------------------------------
+
+12. Reverse the order of characters in a text file. For example, asdfghjkl becomes lkjhgfdsa. Warning: There is no really good, portable, and efficient way of reading a file backward.
+
+-----------------------------------------------------------------------------------------------------
+
+13. Reverse the order of words (defined as whitespace-separated strings) in a file. For example, Norwegian Blue parrot becomes parrot Blue Norwegian. You are allowed to assume that all the strings from the file will fit into memory at once.
+
+-----------------------------------------------------------------------------------------------------
+
+14. Write a program that reads a text file and writes out how many characters of each character classification (§11.6) are in the file.
+
+-----------------------------------------------------------------------------------------------------
+
+15. Write a program that reads a file of whitespace-separated numbers and outputs a file of numbers using scientific format and precision 8 in four fields of 20 characters per line.
+
+-----------------------------------------------------------------------------------------------------
+
+16. Write a program to read a file of whitespace-separated numbers and output them in order (lowest value first), one value per line. Write a value only once, and if it occurs more than once write the count of its occurrences on its line. For example, 7 5 5 7 3 117 5 should give
+
+3
+5     3
+7     2
+117

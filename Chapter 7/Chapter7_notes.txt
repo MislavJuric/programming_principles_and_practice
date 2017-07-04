@@ -1,0 +1,75 @@
+Unsloved exercises:
+
+5. Modify Token_stream::get() to return Token(print) when it sees a newline. This implies looking for whitespace characters and treating newline ('\n') specially. You might find the standard library function isspace(ch), which returns true if ch is a whitespace character, useful.
+
+Exercise 5 notes:
+
+ - this exercise isn't hard, but I haven't solved it when I was reading the chapter, so I'll have to      re-read the code and implement it
+
+----------------------------------------------------------------------------------------------------
+
+8. The grammar in §7.6.4 is incomplete (we did warn you against overreliance on comments); it does not define sequences of statements, such as 4+4; 5–6;, and it does not incorporate the grammar changes outlined in §7.8. Fix that grammar. Also add whatever you feel is needed to that comment as the first comment of the calculator program and its overall comment.
+
+The grammar for input is:
+
+          Statement:
+                    Expression
+                    Print
+                    Quit
+          Print:
+                    ;
+
+          Quit:
+                    q
+
+          Expression:
+                    Term
+                    Expression + Term
+                    Expression – Term
+          Term:
+                    Primary
+                    Term * Primary
+                    Term / Primary
+                    Term % Primary
+          Primary:
+                    Number
+                    ( Expression )
+                    – Primary
+                    + Primary
+          Number:
+                    floating-point-literal
+
+Modified grammar (that allows sequence of statements) would be (I added the 2nd line underneath the "Statement" rule):
+
+ 	  Statement:
+                    Expression
+ 		    Statement Expression
+                    Print
+                    Quit
+          Print:
+                    ;
+
+          Quit:
+                    q
+
+          Expression:
+                    Term
+                    Expression + Term
+                    Expression – Term
+          Term:
+                    Primary
+                    Term * Primary
+                    Term / Primary
+                    Term % Primary
+          Primary:
+                    Number
+                    ( Expression )
+                    – Primary
+                    + Primary
+          Number:
+                    floating-point-literal
+
+----------------------------------------------------------------------------------------------------
+
+10. Modify the calculator to operate on ints (only); give errors for overflow and underflow. Hint: Use narrow_cast (§7.5).
+

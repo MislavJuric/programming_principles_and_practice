@@ -1,0 +1,66 @@
+Notes:
+
+Exercises from this chapter focus on building grammars. I have to say that (for me at least), constructing a formal grammar is not an easy topic. I understand the ideas behind formal grammars, but when I have to construct one myself, that is hard. I haven't invested much time into grammars because I focused more on other parts of programming, but grammar building seems to be an useful skill to have.
+
+---------------------------------------------------------------------------------------------------
+
+Here's Exercise 5 which should be solved "on paper", that is, without code:
+
+5. Add the article the to the “English” grammar in §6.4.1, so that it can describe sentences such as “The birds fly but the fish swim.”
+
+---------------------------------------------------------------------------------------------------
+
+Original grammar:
+
+
+Sentence:
+          Noun Verb                                            // e.g., C++ rules
+          Sentence Conjunction Sentence      // e.g., Birds fly but fish swim
+Conjunction:
+          'and'
+          'or'
+          'but'
+Noun:
+          'birds'
+          'fish'
+          'C++'
+Verb:
+          'rules'
+          'fly'
+          'swim'
+
+---------------------------------------------------------------------------------------------------
+
+Modified grammar:
+
+Sentence:
+          Noun Verb                                            // e.g., C++ rules
+	  Article Noun Verb
+          Sentence Conjunction Sentence      // e.g., Birds fly but fish swim
+Article:
+	'the'
+Conjunction:
+          'and'
+          'or'
+          'but'
+Noun:
+          'birds'
+          'fish'
+          'C++'
+Verb:
+          'rules'
+          'fly'
+          'swim'
+
+
+---------------------------------------------------------------------------------------------------
+
+Unsolved exercises:
+
+6. Write a program that checks if a sentence is correct according to the “English” grammar in §6.4.1. Assume that every sentence is terminated by a full stop (.) surrounded by whitespace. For example, birds fly but the fish swim . is a sentence, but birds fly but the fish swim (terminating dot missing) and birds fly but the fish swim. (no space before dot) are not. For each sentence entered, the program should simply respond “OK” or “not OK.” Hint: Don’t bother with tokens; just read into a string using >>.
+
+Exercise 6 notes:
+
+ - implementing a grammar with a string seems harder when the string is not tokenized (at least from      my current perspective)
+
+7. Write a grammar for bitwise logical expressions. A bitwise logical expression is much like an arithmetic expression except that the operators are ! (not), ~ (complement), & (and), | (or), and ^ (exclusive or). Each operator does its operation to each bit of its integer operands (see §25.5). ! and ~ are prefix unary operators. A ^ binds tighter than a | (just as * binds tighter than +) so that x|y^z means x|(y^z) rather than (x|y)^z. The & operator binds tighter than ^ so that x^y&z means x^(y&z).

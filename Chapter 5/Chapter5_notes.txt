@@ -1,0 +1,11 @@
+Unsolved exercises:
+
+------------------------------------------------------------------------------------------------
+
+9. Modify the program from exercise 8 to write out an error if the result cannot be represented as an int.
+
+ - I have to be able to detect overflow
+
+
+------------------------------------------------------------------------------------------------
+

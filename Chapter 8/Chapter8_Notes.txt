@@ -1,0 +1,7 @@
+Unsolved exercises:
+
+10. Write a function maxv() that returns the largest element of a vector argument.
+
+Notes on exercise 10:
+
+ - vectors are templates, so I'll get back to this once I finish reading about templates
