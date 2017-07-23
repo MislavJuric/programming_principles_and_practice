@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 // 11. Design and implement a counted_ptr<T> that is a type that holds a pointer to an object of type T and a pointer to a
 // “use count” (an int) shared by all counted pointers to the same object of type T. The use count should hold the number of
@@ -13,46 +14,35 @@
 
 // gonna re-implement this (Hint: PIMPL)
 
+// using namespace std;
+
 template<typename T>
 class counted_ptr
 {
     private:
-        static T* elem;
-        static int* useCount; // if I don't initialize it, I will get undefined behaviour... hmmm...
+        T* elem {nullptr};
+        int* useCount {0};
     public:
         counted_ptr(T initValue);
-        counted_ptr();
         ~counted_ptr();
+        counted_ptr(const counted_ptr& other); // copy constructor
+        counted_ptr(counted_ptr&& other); // move constructor
+        counted_ptr& operator= (const counted_ptr& other); // copy assignment
+        counted_ptr& operator= (counted_ptr&& other); // move assignment
 
+
+        T* getElem() { return elem; }
+        void incrementUseCount() { *useCount++; }
+        int getUseCount() { return *useCount; }
 };
-
-template<typename T> int* counted_ptr<T>::useCount = nullptr;
-template<typename T> T* counted_ptr<T>::elem = nullptr;
-
-template<typename T>
-counted_ptr<T>::counted_ptr()
-{
-    if (*useCount == 0)
-    {
-        // error("You have to initialize the object counted_ptr points to.");
-    }
-}
 
 template<typename T>
 counted_ptr<T>::counted_ptr(T initValue)
 {
-    if (elem == nullptr)
-    {
-        elem = new T{initValue};
-    }
-    if (useCount == nullptr)
-    {
-        useCount = new int{1};
-    }
-    else
-    {
-        *useCount++;
-    }
+    elem = new T;
+    *elem = initValue;
+    useCount = new int;
+    incrementUseCount();
 }
 
 template<typename T>
@@ -61,14 +51,51 @@ counted_ptr<T>::~counted_ptr()
     *useCount--;
     if (*useCount == 0)
     {
-        delete useCount;
         delete elem;
+        delete useCount;
     }
+}
+
+template<typename T>
+counted_ptr<T>::counted_ptr(const counted_ptr& other) // copy constructor
+{
+    elem = other.elem;
+    incrementUseCount(); // I think I made a mistake here; other's use count should match this object's use count after this line
+}
+
+template<typename T>
+counted_ptr<T>::counted_ptr(counted_ptr&& other) // move constructor
+{
+    elem = other.elem;
+    incrementUseCount();
+    other.useCount = useCount; // I think I'm missing this line in the above code
+}
+
+template<typename T>
+counted_ptr<T>& counted_ptr<T>::operator= (const counted_ptr& other) // copy assignment
+{
+    delete elem;
+    delete useCount;
+    elem = other.elem;
+    useCount = new int;
+    incrementUseCount();
+}
+
+template<typename T>
+counted_ptr<T>& counted_ptr<T>::operator= (counted_ptr&& other)
+{
+    delete elem;
+    delete useCount;
+    elem = other.elem;
+    useCount = new int;
+    incrementUseCount();
+    other.useCount = useCount;
 }
 
 int main()
 {
-    counted_ptr<int> cp{3};
-
+    counted_ptr<std::string> p{"pizza"};
+    counted_ptr<std::string> s = p;
+    std::cout << p.getUseCount() << std::endl;
     return 0;
 }

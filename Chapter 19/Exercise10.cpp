@@ -15,7 +15,7 @@ class unique_ptr
         ~unique_ptr();
 
         // my -> operator isn't right... hmmmm...
-        T operator->() const
+        T* operator->() const
         {
             return elem;
         }
@@ -52,5 +52,6 @@ int main()
     int* myInt = new int{3};
     unique_ptr<int> up{myInt};
     cout << *up << endl;
+    // cout << up->elem << endl;
     return 0;
 }
