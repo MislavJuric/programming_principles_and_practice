@@ -1,0 +1,59 @@
+Unsolved exercises:
+
+3. Look at the palindrome examples (§18.7); redo the Jack-and-Jill example from §20.1.2 using that variety of techniques.
+
+----------------------------------------------------------------------------------------------------
+
+6. Write a find-and-replace operation for Documents based on §20.6.2.
+
+Exercise 6 notes:
+
+ - have to think this one through a bit more
+
+----------------------------------------------------------------------------------------------------
+
+9. Define a program that counts the number of words in a Document. Provide two versions: one that defines word as “a whitespace-separated sequence of characters” and one that defines word as “a sequence of consecutive alphabetic characters.” For example, with the former definition, alpha.numeric and as12b are both single words, whereas with the second definition they are both two words.
+
+Exercise 9 notes:
+
+ - counts the words wrongly; I need to fix this
+
+----------------------------------------------------------------------------------------------------
+
+10. Define a version of the word-counting program where the user can specify the set of whitespace characters.
+
+----------------------------------------------------------------------------------------------------
+
+12. Complete the definition of list from §20.4.1–2 and get the high() example to run. Allocate a Link to represent one past the end.
+
+Exercise 12 notes:
+
+ - I got the example to run, but I didn't allocate a Link to represent one past the end
+
+----------------------------------------------------------------------------------------------------
+
+13. We don’t really need a “real” one-past-the-end Link for a list. Modify your solution to the previous exercise to use 0 to represent a pointer to the (nonexistent) one-past-the-end Link (list<Elem>::end()); that way, the size of an empty list can be equal to the size of a single pointer.
+
+----------------------------------------------------------------------------------------------------
+
+14. Define a singly-linked list, slist, in the style of std::list. Which operations from list could you reasonably eliminate from slist because it doesn’t have back pointers?
+
+----------------------------------------------------------------------------------------------------
+
+15. Define a pvector to be like a vector of pointers except that it contains pointers to objects and its destructor deletes each object.
+
+----------------------------------------------------------------------------------------------------
+
+16. Define an ovector that is like pvector except that the [ ] and * operators return a reference to the object pointed to by an element rather than the pointer.
+
+----------------------------------------------------------------------------------------------------
+
+17. Define an ownership_vector that hold pointers to objects like pvector but provides a mechanism for the user to decide which objects are owned by the vector (i.e., which objects are deleted by the destructor). Hint: This exercise is simple if you were awake for Chapter 13.
+
+----------------------------------------------------------------------------------------------------
+
+18. Define a range-checked iterator for vector (a random-access iterator).
+
+----------------------------------------------------------------------------------------------------
+
+19. Define a range-checked iterator for list (a bidirectional iterator).
