@@ -19,6 +19,8 @@ class list {
           Link<Elem>* first;
           Link<Elem>* last;    // one beyond the last link
 public:
+          list() { Link<Elem>* node = new Link<Elem>; node->val = INT_MIN; first = node; last = node; }
+
           class iterator;                 // member type: iterator
 
           iterator begin();            // iterator to first element
@@ -48,20 +50,21 @@ void list<Elem>::push_front(const Elem& v)
     newNode->prev = nullptr;
     newNode->succ = first;
 }
+
 template <typename Elem>
-iterator list<Elem>::begin()
+typename list<Elem>::iterator list<Elem>::begin()
 {
     return first;
 }
 
 template <typename Elem>
-iterator list<Elem>::end()
+typename list<Elem>::iterator list<Elem>::end()
 {
     return last;
 }
 
 
-//--------------------------------------------------------------------------------------------
+//---------------------------------Exercise 19--------------------------------------------
 
 template<typename Elem>         // requires Element<Elem>() (§19.3.3)
 class list<Elem>::iterator {
@@ -69,13 +72,15 @@ class list<Elem>::iterator {
 public:
           iterator(Link<Elem>* p) :curr{p} { }
 
-          iterator& operator++() {curr = curr->succ; return *this; }   // forward
-          iterator& operator--() { curr = curr->prev; return *this; }   // backward
+          iterator& operator++() { curr = curr->succ; return *this;}   // forward
+          iterator& operator--() { curr = curr->prev; return *this;}   // backward
           Elem& operator*() { return curr->val; }   // get value (dereference)
 
           bool operator==(const iterator& b) const { return curr==b.curr; }
           bool operator!= (const iterator& b) const { return curr!=b.curr; }
 };
+
+//---------------------------------Exercise 19--------------------------------------------
 
 template<typename Iter>  // requires Input_iterator<Iter>() (§19.3.3)
 Iter high(Iter first, Iter last)

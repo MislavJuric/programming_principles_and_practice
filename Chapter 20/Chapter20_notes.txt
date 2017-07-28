@@ -16,7 +16,7 @@ Exercise 6 notes:
 
 Exercise 9 notes:
 
- - counts the words wrongly; I need to fix this
+ - it counts the words correctly if there is a '\n' at the end of a file; I need to figure out how to     generalize my solution to work even if there is no '\n' at the end of a file
 
 ----------------------------------------------------------------------------------------------------
 
@@ -28,15 +28,11 @@ Exercise 9 notes:
 
 Exercise 12 notes:
 
- - I got the example to run, but I didn't allocate a Link to represent one past the end
+ - Have a bug here
 
 ----------------------------------------------------------------------------------------------------
 
 13. We don’t really need a “real” one-past-the-end Link for a list. Modify your solution to the previous exercise to use 0 to represent a pointer to the (nonexistent) one-past-the-end Link (list<Elem>::end()); that way, the size of an empty list can be equal to the size of a single pointer.
-
-----------------------------------------------------------------------------------------------------
-
-14. Define a singly-linked list, slist, in the style of std::list. Which operations from list could you reasonably eliminate from slist because it doesn’t have back pointers?
 
 ----------------------------------------------------------------------------------------------------
 
