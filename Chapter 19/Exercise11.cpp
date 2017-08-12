@@ -10,9 +10,9 @@
 // destroyed until after its last user has stopped using it. Write a set of test cases for counted_ptr using it as an argument
 // in calls, container elements, etc.
 
-// I misinterpreted the task... I thought that all counted_ptr<T> should point to the same object, while this is not the case
+// gonna re-implement this (Hint: PIMPL) -- read the below note
 
-// gonna re-implement this (Hint: PIMPL)
+// I didn't use PIMPL here
 
 // using namespace std;
 
@@ -21,7 +21,7 @@ class counted_ptr
 {
     private:
         T* elem {nullptr};
-        int* useCount {0};
+        int* useCount {nullptr};
     public:
         counted_ptr(T initValue);
         ~counted_ptr();
@@ -32,23 +32,31 @@ class counted_ptr
 
 
         T* getElem() { return elem; }
-        void incrementUseCount() { *useCount++; }
+        void incrementUseCount() { (*useCount)++; }
         int getUseCount() { return *useCount; }
+
+        T operator * () { return *elem; }
+        // I won't implement operator -> since I don't have a struct within this class
 };
 
 template<typename T>
 counted_ptr<T>::counted_ptr(T initValue)
 {
+    std::cout << "Constructor" << std::endl;
     elem = new T;
     *elem = initValue;
     useCount = new int;
+    *useCount = 0;
     incrementUseCount();
+    // *useCount++; // this also doesn't work
+    std::cout << "useCount is: " << *useCount << std::endl; // why 0 here?
 }
 
 template<typename T>
 counted_ptr<T>::~counted_ptr()
 {
-    *useCount--;
+    std::cout << "Destructor" << std::endl;
+    (*useCount)--;
     if (*useCount == 0)
     {
         delete elem;
@@ -59,43 +67,56 @@ counted_ptr<T>::~counted_ptr()
 template<typename T>
 counted_ptr<T>::counted_ptr(const counted_ptr& other) // copy constructor
 {
+    std::cout << "Copy constructor" << std::endl;
     elem = other.elem;
+    useCount = other.useCount;
     incrementUseCount(); // I think I made a mistake here; other's use count should match this object's use count after this line
+    // this above line causes a segfault
 }
 
 template<typename T>
 counted_ptr<T>::counted_ptr(counted_ptr&& other) // move constructor
 {
+    std::cout << "Move constructor" << std::endl;
     elem = other.elem;
+    useCount = other.useCount;
     incrementUseCount();
-    other.useCount = useCount; // I think I'm missing this line in the above code
 }
 
 template<typename T>
 counted_ptr<T>& counted_ptr<T>::operator= (const counted_ptr& other) // copy assignment
 {
+    std::cout << "Copy assignment" << std::endl;
     delete elem;
     delete useCount;
     elem = other.elem;
-    useCount = new int;
+    useCount = other.useCount;
     incrementUseCount();
 }
 
 template<typename T>
-counted_ptr<T>& counted_ptr<T>::operator= (counted_ptr&& other)
+counted_ptr<T>& counted_ptr<T>::operator= (counted_ptr&& other) // move assignment
 {
+    std::cout << "Move assignment" << std::endl;
     delete elem;
     delete useCount;
     elem = other.elem;
-    useCount = new int;
+    useCount = other.useCount;
     incrementUseCount();
-    other.useCount = useCount;
 }
+
+template<typename T>
+counted_ptr<T> f(counted_ptr<T> arg) { return arg; }
 
 int main()
 {
     counted_ptr<std::string> p{"pizza"};
     counted_ptr<std::string> s = p;
     std::cout << p.getUseCount() << std::endl;
+    counted_ptr<std::string> second{"tuna"};
+    s = second;
+    std::cout << s.getUseCount() << std::endl;
+    std::cout << *s << std::endl;
+    s = f(second);
     return 0;
 }
