@@ -8,15 +8,7 @@ Unsolved exercises:
 
 Exercise 6 notes:
 
- - have to think this one through a bit more
-
-----------------------------------------------------------------------------------------------------
-
-9. Define a program that counts the number of words in a Document. Provide two versions: one that defines word as “a whitespace-separated sequence of characters” and one that defines word as “a sequence of consecutive alphabetic characters.” For example, with the former definition, alpha.numeric and as12b are both single words, whereas with the second definition they are both two words.
-
-Exercise 9 notes:
-
- - it counts the words correctly if there is a '\n' at the end of a file; I need to figure out how to     generalize my solution to work even if there is no '\n' at the end of a file
+ - have to think this one through a bit more; if I were to replace a string with a smaller string, I'd    have to move all the elements from the right to the left by a certain offset and then remove the       unused memory...
 
 ----------------------------------------------------------------------------------------------------
 

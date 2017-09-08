@@ -69,19 +69,20 @@ void print(Document& d)
           for (auto p : d) cout << p;
 }
 
+//--------------------------------Exercise 9---------------------------------------
+
 int countWordsWhitespace(Document& d)
 {
     bool hitWhitespace = false;
     int count = 0;
     for (auto p : d)
     {
-        if (((p == ' ') && (hitWhitespace == false)) || ((p == '\n') && (hitWhitespace == false)))
-        // need to figure out how to count words right next to the end of file
+        if ((isspace(p)) && (hitWhitespace == false))
         {
             hitWhitespace = true;
             count++;
         }
-        if (p != ' ')
+        if ((!isspace(p)) && (isalnum(p))) // additional check to see if the string contains letters or number ( isalnum() )
         {
             hitWhitespace = false;
         }
@@ -89,7 +90,7 @@ int countWordsWhitespace(Document& d)
     return count;
 }
 
-int countWordsAlphabet(Document& d) // this also isn't counting words properly... gotta get back to this
+int countWordsAlphabet(Document& d)
 {
     bool hitNotAlphabet = false;
     int count = 0;
@@ -107,6 +108,8 @@ int countWordsAlphabet(Document& d) // this also isn't counting words properly..
     }
     return count;
 }
+
+//--------------------------------Exercise 9---------------------------------------
 
 int main()
 {
