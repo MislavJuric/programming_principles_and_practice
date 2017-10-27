@@ -1,0 +1,6 @@
+Exercise7
+ - still have to do binary search for list<string>
+
+Exercise9
+ - have to see how to handle reading the last Purchase
+ - adding a comma after each Purchase in the .txt file would be nice
